@@ -9,7 +9,7 @@ defmodule BcryptRust.Native do
     targets: [
       "aarch64-apple-darwin",
       "aarch64-unknown-linux-gnu",
-      # "aarch64-unknown-linux-musl",
+      "aarch64-unknown-linux-musl",
       "arm-unknown-linux-gnueabihf",
       "riscv64gc-unknown-linux-gnu",
       "x86_64-apple-darwin",
