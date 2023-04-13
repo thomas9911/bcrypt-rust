@@ -1,0 +1,14 @@
+[package]
+name = "bcrypt_native"
+version = "0.1.0"
+authors = []
+edition = "2021"
+
+[lib]
+name = "bcrypt_native"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+bcrypt = "0.14.0"
+rustler = "0.27.0"
