@@ -15,6 +15,12 @@ jobs:
             elixir: "1.12.3"
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: |
+            _build
+            deps
+          key: otp-${{ matrix.otp }}-elixir-${{ matrix.elixir }}-${{ hashFiles('mix.lock') }}
       - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{matrix.otp}}
