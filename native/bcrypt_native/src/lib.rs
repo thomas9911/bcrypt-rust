@@ -17,7 +17,7 @@ impl Into<bcrypt::Version> for Version {
     }
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn hash(password: &str) -> Result<String, String> {
     match bcrypt::hash(password, bcrypt::DEFAULT_COST) {
         Ok(hash) => Ok(hash),
@@ -25,7 +25,7 @@ fn hash(password: &str) -> Result<String, String> {
     }
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn verify(password: &str, hash_input: &str) -> Result<bool, String> {
     match bcrypt::verify(password, hash_input) {
         Ok(allowed) => Ok(allowed),
@@ -33,7 +33,7 @@ fn verify(password: &str, hash_input: &str) -> Result<bool, String> {
     }
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn hash_with_version(password: &str, version: Version) -> Result<String, String> {
     match bcrypt::hash_with_result(password, bcrypt::DEFAULT_COST) {
         Ok(parts) => Ok(parts.format_for_version(version.into())),
